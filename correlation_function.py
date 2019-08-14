@@ -2,6 +2,7 @@ import re
 from collections import Counter
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 def tokenize(sentence):
     '''
@@ -111,6 +112,30 @@ if __name__ == '__main__':
     plt.plot(distance, df_they_their_smooth, label='they_their')
     plt.plot(distance, df_he_her_smooth, label='he, her')
     plt.plot(distance, df_she_his_smooth, label='she, his')
+    plt.xticks(np.arange(0, 101, step=10))
+    plt.yticks(np.arange(0, 10, step=1))
+    plt.ylim(bottom=0)
+    plt.xlim(left=0, right=100)
+    plt.legend(loc='upper right')
+    plt.title("Correlation Value by Distance")
+    plt.xlabel('Distance')
+    plt.ylabel('Correlation value')
+    plt.legend()
+    plt.show()
+
+    # Generates a curve where the x-axis represents the distance d in logarithmic scale and
+    # the y-axis represents the value of the correlation in linear scale.
+
+    distance = list(range(1, 101))
+
+    plt.title('Running mean')
+    plt.loglog(distance, df_you_your_smooth, label='you, your')
+    plt.loglog(distance, df_she_her_smooth, label='she, her')
+    plt.loglog(distance, df_he_his_smooth, label='he, his')
+    plt.loglog(distance, df_they_their_smooth, label='they_their')
+    plt.loglog(distance, df_he_her_smooth, label='he, her')
+    plt.loglog(distance, df_she_his_smooth, label='she, his')
+    plt.legend(loc='upper right')
     plt.title("Correlation Value by Distance")
     plt.xlabel('Distance')
     plt.ylabel('Correlation value')
