@@ -1,4 +1,4 @@
-# Correlation function 
+# Long-range Word Dependency
 
  
 This repo contains code to implement correlation function to analyze word dependencies
